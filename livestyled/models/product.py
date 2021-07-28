@@ -188,6 +188,7 @@ class ProductModifierList:
             status,
             external_id,
             items,
+            products,
             translations,
             mandatory_select,
             multiple_select
@@ -195,6 +196,7 @@ class ProductModifierList:
         self.id = id
         self.reference = reference
         self.items = items
+        self.products = products
         self.external_id = external_id
         self.status = status
         self.translations = translations
@@ -206,6 +208,7 @@ class ProductModifierList:
             cls,
             reference,
             items,
+            products,
             external_id,
             status,
             translations,
@@ -216,6 +219,7 @@ class ProductModifierList:
             id=None,
             reference=reference,
             items=items,
+            products=products,
             external_id=external_id,
             status=status,
             translations=translations,
@@ -231,6 +235,7 @@ class ProductModifierList:
             id,
             reference=None,
             items=None,
+            products=None,
             external_id=None,
             translations=None,
             status=None,
@@ -241,7 +246,7 @@ class ProductModifierList:
     def diff(self, other):
         differences = {}
         fields = (
-            'external_id', 'status', 'reference', 'translations', 'items', 'mandatory_select', 'multiple_select'
+            'external_id', 'status', 'reference', 'translations', 'items', 'products', 'mandatory_select', 'multiple_select'
         )
         for field in fields:
             if getattr(self, field) != getattr(other, field):

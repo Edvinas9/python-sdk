@@ -150,6 +150,7 @@ class ProductModifierListSchema(Schema):
     mandatory_select = fields.Boolean(data_key='mandatorySelect')
     translations = fields.Nested(ProductModifierListTranslationsSchema, many=True, missing=[])
     items = RelatedResourceField(schema=ProductModifierItemSchema, many=True, missing=[], microservice_aware=True)
+    products = RelatedResourceField(schema=ProductSchema, many=True, missing=[], microservice_aware=True)
 
 
 class ProductSchema(Schema):
