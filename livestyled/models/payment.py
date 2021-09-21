@@ -45,10 +45,7 @@ class PaymentCustomer:
         id
     ):
         return cls(
-            id=id,
-            user=None,
-            external_ids=None,
-            payment_sources=[]
+            id=id
         )
 
     def diff(self, other):
