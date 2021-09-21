@@ -15,6 +15,9 @@ class PaymentCustomer:
         created_at: datetime or None = None,
         updated_at: datetime or None = None
     ):
+        if isinstance(user, (str, int)):
+            user = User.placeholder(id=user)
+
         self.id = id
         self.user = user
         self.external_ids = external_ids
@@ -138,9 +141,12 @@ class PaymentSource:
         created_at: datetime or None = None,
         updated_at: datetime or None = None
     ):
+        if isinstance(payment_customer, (str, int)):
+            payment_customer = PaymentCustomer.placeholder(id=payment_customer)
+
         self.id = id
         self.status = status
-        self.payment_customer = PaymentCustomer.placeholder(id=payment_customer)
+        self.payment_customer = payment_customer
         self.token_provider = token_provider
         self.external_id = external_id
         self.type = type
