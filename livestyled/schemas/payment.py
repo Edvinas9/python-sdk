@@ -62,6 +62,7 @@ class PaymentIntentSchema(Schema):
 
     id = fields.Int(missing=None)
     external_id = fields.String(data_key='externalId', missing=None)
+    payment_source = RelatedResourceLinkField(schema=PaymentSourceSchema, data_key='paymentSource', microservice_aware=True)
     payment_customer = RelatedResourceLinkField(schema=PaymentCustomerSchema, data_key='paymentCustomer', microservice_aware=True)
     status = fields.String()
     amount = fields.Int()

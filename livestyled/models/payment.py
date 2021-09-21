@@ -221,6 +221,7 @@ class PaymentIntent:
         self,
         id: int,
         external_id: str or None,
+        payment_source: str or None,
         payment_customer: str or None,
         status: str,
         amount: int,
@@ -234,11 +235,15 @@ class PaymentIntent:
         created_at: datetime or None = None,
         updated_at: datetime or None = None
     ):
+        if isinstance(payment_source, (str, int)):
+            payment_source = PaymentSource.placeholder(id=payment_source)
+
         if isinstance(payment_customer, (str, int)):
             payment_customer = PaymentCustomer.placeholder(id=payment_customer)
 
         self.id = id
         self.external_id = external_id
+        self.payment_source = payment_source
         self.payment_customer = payment_customer
         self.status = status
         self.amount = amount
@@ -256,6 +261,7 @@ class PaymentIntent:
     def create_new(
         cls,
         external_id: str or None,
+        payment_source: str,
         payment_customer: str,
         status: str,
         amount: int,
@@ -267,6 +273,9 @@ class PaymentIntent:
         order_type: str,
         order: str
     ):
+        if isinstance(payment_source, (str, int)):
+            payment_source = PaymentSource.placeholder(id=payment_source)
+
         if isinstance(payment_customer, (str, int)):
             payment_customer = PaymentCustomer.placeholder(id=payment_customer)
 
@@ -276,6 +285,7 @@ class PaymentIntent:
         return PaymentIntent(
             id=None,
             external_id=external_id,
+            payment_source=payment_source,
             payment_customer=payment_customer,
             status=status,
             amount=amount,
@@ -296,6 +306,7 @@ class PaymentIntent:
         return cls(
             id=id,
             external_id=None,
+            payment_source=None,
             payment_customer=None,
             status=None,
             amount=None,
@@ -311,7 +322,7 @@ class PaymentIntent:
     def diff(self, other):
         differences = {}
         fields = (
-            'external_id', 'payment_customer', 'status', 'amount', 'currency', 'last_payment_error', 'live_mode', 'save_payment_source', 'next_action', 'order_type', 'order'
+            'external_id', 'payment_source', 'payment_customer', 'status', 'amount', 'currency', 'last_payment_error', 'live_mode', 'save_payment_source', 'next_action', 'order_type', 'order'
         )
         for field in fields:
             if getattr(self, field) != getattr(other, field):
@@ -321,6 +332,10 @@ class PaymentIntent:
     @property
     def payment_customer_id(self):
         return self.payment_customer.id
+
+    @property
+    def payment_source_id(self):
+        return self.payment_source.id
 
     @property
     def order_id(self):
