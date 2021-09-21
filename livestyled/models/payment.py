@@ -65,9 +65,6 @@ class PaymentCustomer:
     def user_id(self):
         return self.user.id
 
-    @property
-    def user(self):
-        return self.user
 
 
 class PaymentGateway:
