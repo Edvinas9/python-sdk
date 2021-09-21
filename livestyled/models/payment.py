@@ -9,8 +9,8 @@ class PaymentCustomer:
     def __init__(
         self,
         id: int,
-        external_ids: dict,
-        payment_sources: [],
+        payment_sources: [] or None = [],
+        external_ids: dict or None = None,
         user: str or None = None,
         created_at: datetime or None = None,
         updated_at: datetime or None = None
