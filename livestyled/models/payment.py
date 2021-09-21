@@ -215,10 +215,6 @@ class PaymentSource:
     def payment_customer_id(self):
         return self.payment_customer.id
 
-    @property
-    def payment_customer(self):
-        return self.payment_customer
-
 
 class PaymentIntent:
     def __init__(
@@ -327,16 +323,8 @@ class PaymentIntent:
         return self.payment_customer.id
 
     @property
-    def payment_customer(self):
-        return self.payment_customer
-
-    @property
     def order_id(self):
         return self.order.id
-
-    @property
-    def order(self):
-        return self.order
 
 
 class MerchantAccount:
@@ -408,7 +396,3 @@ class MerchantAccount:
     @property
     def payment_gateway_id(self):
         return self.payment_gateway.id
-
-    @property
-    def payment_gateway(self):
-        return self.payment_gateway
