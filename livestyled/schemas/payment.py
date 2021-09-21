@@ -42,7 +42,7 @@ class PaymentSourceSchema(Schema):
 
     id = fields.Int(missing=None)
     status = fields.String()
-    payment_customer_id = RelatedResourceLinkField(schema=PaymentCustomerSchema, data_key='paymentCustomer', microservice_aware=True)
+    payment_customer = RelatedResourceLinkField(schema=PaymentCustomerSchema, data_key='paymentCustomer', microservice_aware=True)
     token_provider = fields.String(data_key='tokenProvider')
     external_id = fields.String(data_key='externalId')
     psp = fields.String()
@@ -62,7 +62,7 @@ class PaymentIntentSchema(Schema):
 
     id = fields.Int(missing=None)
     external_id = fields.String(data_key='externalId', missing=None)
-    payment_customer_id = RelatedResourceLinkField(schema=PaymentCustomerSchema, data_key='paymentCustomer', microservice_aware=True)
+    payment_customer = RelatedResourceLinkField(schema=PaymentCustomerSchema, data_key='paymentCustomer', microservice_aware=True)
     status = fields.String()
     amount = fields.Int()
     currency = fields.String()
