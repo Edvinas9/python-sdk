@@ -238,9 +238,12 @@ class PaymentIntent:
         created_at: datetime or None = None,
         updated_at: datetime or None = None
     ):
+        if isinstance(payment_customer, (str, int)):
+            payment_customer = PaymentCustomer.placeholder(id=payment_customer)
+
         self.id = id
         self.external_id = external_id
-        self.payment_customer = PaymentCustomer.placeholder(id=payment_customer)
+        self.payment_customer = payment_customer
         self.status = status
         self.amount = amount
         self.currency = currency
