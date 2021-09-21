@@ -16,7 +16,7 @@ class PaymentCustomer:
         updated_at: datetime or None = None
     ):
         self.id = id
-        self.user = User.placeholder(id=user)
+        self.user = user
         self.external_ids = external_ids
         self.payment_sources = payment_sources
         self.created_at = created_at
