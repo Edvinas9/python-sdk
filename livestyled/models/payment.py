@@ -232,7 +232,7 @@ class PaymentIntent:
         last_payment_error: str or None,
         live_mode: bool,
         save_payment_source: bool,
-        next_action: dict,
+        next_action: dict or None,
         order_type: str,
         order: str or None,
         created_at: datetime or None = None,

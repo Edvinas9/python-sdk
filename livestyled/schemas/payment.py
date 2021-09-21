@@ -66,10 +66,10 @@ class PaymentIntentSchema(Schema):
     status = fields.String()
     amount = fields.Int()
     currency = fields.String()
-    last_payment_error = fields.String(data_key='lastPaymentError')
+    last_payment_error = fields.String(data_key='lastPaymentError', missing=None)
     live_mode = fields.Bool(data_key='liveMode')
     save_payment_source = fields.Bool(data_key='savePaymentSource')
-    next_action = fields.Dict(data_key='nextAction')
+    next_action = fields.Dict(data_key='nextAction', missing=None)
     order_type = fields.String(data_key='orderType')
     order = RelatedResourceLinkField(schema=OrderSchema, data_key='orderId', microservice_aware=True)
 
