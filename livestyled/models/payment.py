@@ -198,6 +198,7 @@ class PaymentSource:
             default=None,
             billing_details=None,
             card=None,
+            psp=None,
             psp_tokens=[]
         )
 
