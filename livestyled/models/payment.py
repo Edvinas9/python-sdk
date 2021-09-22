@@ -229,9 +229,9 @@ class PaymentIntent:
         last_payment_error: str or None,
         live_mode: bool,
         save_payment_source: bool,
-        next_action: dict or None,
         order_type: str,
         order: str or None,
+        next_action: dict or None = None,
         created_at: datetime or None = None,
         updated_at: datetime or None = None
     ):
