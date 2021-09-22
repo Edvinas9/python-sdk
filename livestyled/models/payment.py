@@ -269,7 +269,7 @@ class PaymentIntent:
         last_payment_error: str or None,
         live_mode: bool,
         save_payment_source: bool,
-        next_action: dict,
+        next_action: dict or None,
         order_type: str,
         order: str
     ):
@@ -314,7 +314,7 @@ class PaymentIntent:
             last_payment_error=None,
             live_mode=None,
             save_payment_source=None,
-            next_action={},
+            next_action=None,
             order_type=None,
             order=None
         )

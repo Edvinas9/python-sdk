@@ -199,7 +199,6 @@ class LiveStyledResourceClient(LiveStyledAPIClient):
             'v4/{}/{}'.format(schema.Meta.url, resource_id),
             payload
         )
-        print(updated_resource)
         return schema.Meta.model(**schema().load(updated_resource))
 
     def _update_resource_by_composite_id(
