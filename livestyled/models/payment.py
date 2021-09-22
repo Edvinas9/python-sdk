@@ -66,7 +66,6 @@ class PaymentCustomer:
         return self.user.id
 
 
-
 class PaymentGateway:
     def __init__(
         self,

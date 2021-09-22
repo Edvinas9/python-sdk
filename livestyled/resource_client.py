@@ -194,7 +194,6 @@ class LiveStyledResourceClient(LiveStyledAPIClient):
         return schema.Meta.model(**schema().load(updated_resource))
 
     def _replace_resource(self, schema: Type[Schema], resource_id: int, model_instance):
-        attributes_to_update = list(attributes.keys())
         payload = schema().dump(model_instance)
         updated_resource = self._api_put(
             'v4/{}/{}'.format(schema.Meta.url, resource_id),
